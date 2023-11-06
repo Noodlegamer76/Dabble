@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "dabble:block/frying_pan",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "dabble:block/frying_pan",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "dabble:block/frying_pan"
+    },
+    "facing=west": {
+      "model": "dabble:block/frying_pan",
+      "y": 90
+    }
+  }
+}

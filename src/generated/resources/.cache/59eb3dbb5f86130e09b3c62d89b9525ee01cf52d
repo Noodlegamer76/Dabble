@@ -1,0 +1,4 @@
+// 1.20.1	2023-11-04T16:38:42.3711492	Loot Tables
+f7fa6120fcc5aa77f97540765ce35d8eb4d9d1c8 data/dabble/loot_tables/blocks/example_block.json
+8dfdca0d4d9a95745c97dc9f6a3ce4a90d0a3946 data/dabble/loot_tables/blocks/pattern_carpet.json
+a63d5056d5460345bce4ef278e96b6afe47c5ef0 data/dabble/loot_tables/blocks/pattern_wool.json
