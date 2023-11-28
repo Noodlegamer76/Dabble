@@ -2,8 +2,11 @@ package com.noodlegamer76.dabble;
 
 import com.mojang.logging.LogUtils;
 import com.noodlegamer76.dabble.block.InitBlocks;
+import com.noodlegamer76.dabble.client.model.BlockModel;
+import com.noodlegamer76.dabble.client.renderer.EndSkyRenderer;
 import com.noodlegamer76.dabble.creativetabs.DabbleTab;
 import com.noodlegamer76.dabble.creativetabs.InitCreativeTabs;
+import com.noodlegamer76.dabble.entity.block.EndSkyEntity;
 import com.noodlegamer76.dabble.entity.block.InitBlockEntities;
 import com.noodlegamer76.dabble.item.InitItems;
 import net.minecraft.client.Minecraft;
@@ -89,18 +92,21 @@ public class DabbleMod
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-
         }
 
         @SubscribeEvent
         public static void entityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-            //event.registerBlockEntityRenderer(InitBlockEntities.CUSTOM_CAMPFIRE.get(), CampfireRenderer::new);
+            event.registerBlockEntityRenderer(InitBlockEntities.END_SKY_ENTITY.get(), EndSkyRenderer::new);
+        }
+        @SubscribeEvent
+        public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+            event.registerLayerDefinition(BlockModel.LAYER_LOCATION, BlockModel::createBodyLayer);
         }
 
         @SubscribeEvent
         public static void assignBlockColors(RegisterColorHandlersEvent.Block event) {
             event.register((state, level, pos, tintIndex) -> pos != null && level != null ?
-                            Color.getHSBColor(GrassColor.get(), 0.75F, 0.85F).getRGB() : 0,
+                            Color.getHSBColor((float) (Math.sin(pos.getX()) + Math.sin(pos.getZ()) + Math.sin(pos.getY())), 0.75F, 0.85F).getRGB() : 0,
                     InitBlocks.PATTERN_WOOL.get(),
                     InitBlocks.PATTERN_CARPET.get()
 

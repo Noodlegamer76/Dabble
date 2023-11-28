@@ -12,6 +12,7 @@ public class DabbleTab {
             event.accept(InitItems.FRYING_PAN);
             event.accept(InitItems.PATTERN_WOOL);
             event.accept(InitItems.PATTERN_CARPET);
+            event.accept(InitItems.END_SKY);
         }
     }
 }

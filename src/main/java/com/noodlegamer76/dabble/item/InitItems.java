@@ -24,5 +24,7 @@ public class InitItems {
             () -> new BlockItem(InitBlocks.PATTERN_WOOL.get(), new Item.Properties()));
     public static final RegistryObject<Item> PATTERN_CARPET = ITEMS.register("pattern_carpet",
             () -> new BlockItem(InitBlocks.PATTERN_CARPET.get(), new Item.Properties()));
+    public static final RegistryObject<Item> END_SKY = ITEMS.register("end_sky",
+            () -> new BlockItem(InitBlocks.END_SKY_BLOCK.get(), new Item.Properties()));
 
 }
