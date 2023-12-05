@@ -10,12 +10,14 @@ import com.noodlegamer76.dabble.entity.block.EndSkyEntity;
 import com.noodlegamer76.dabble.entity.block.InitBlockEntities;
 import com.noodlegamer76.dabble.item.InitItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.client.renderer.blockentity.CampfireRenderer;
 import net.minecraft.world.level.GrassColor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.RegisterShadersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -119,6 +121,10 @@ public class DabbleMod
                     InitItems.PATTERN_WOOL.get(),
                     InitItems.PATTERN_CARPET.get()
             );
+
+        }
+        @SubscribeEvent
+        public static void registerShadersEvent(RegisterShadersEvent event) {
 
         }
     }

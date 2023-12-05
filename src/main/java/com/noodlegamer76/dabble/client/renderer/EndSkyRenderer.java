@@ -1,6 +1,7 @@
 package com.noodlegamer76.dabble.client.renderer;
 
 import com.mojang.authlib.GameProfile;
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.shaders.Shader;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
@@ -11,10 +12,7 @@ import com.noodlegamer76.dabble.entity.block.EndSkyEntity;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -22,7 +20,10 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.client.event.RegisterShadersEvent;
 import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.lwjgl.opengl.GL11;
 
 import java.util.UUID;
 
@@ -36,15 +37,10 @@ public class EndSkyRenderer implements BlockEntityRenderer<EndSkyEntity> {
     @Override
     public void render(EndSkyEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
 
-        RenderSystem.enableBlend();
-        RenderSystem.depthMask(false);
-        RenderSystem.renderCrosshair(100);
-        RenderSystem.setShader(GameRenderer::getRendertypeEndPortalShader);
-        RenderSystem.setShaderTexture(0, TEXTURE);
+        pPoseStack.pushPose();
+        pPoseStack.translate(0.5, -1.5, 0.5);
 
-
-
-        RenderSystem.depthMask(true);
-        RenderSystem.disableBlend();
+        model.render(pPoseStack, pBuffer.getBuffer(RenderType.endPortal()), pPackedLight, pPackedOverlay);
+        pPoseStack.popPose();
     }
 }
