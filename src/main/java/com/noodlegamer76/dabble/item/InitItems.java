@@ -14,6 +14,9 @@ public class InitItems {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DabbleMod.MODID);
 
+    //item i use to trigger stuff in this mod
+    public static final RegistryObject<Item> TEST_ITEM = ITEMS.register("test_item",
+            () -> new TestItem(new Item.Properties()));
 
     public static final RegistryObject<Item> FRYING_PAN = ITEMS.register("frying_pan",
             () -> new FryingPan(InitBlocks.FRYING_PAN.get(), new Item.Properties()));

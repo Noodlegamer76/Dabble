@@ -12,8 +12,8 @@ import net.minecraftforge.registries.RegistryObject;
 public class InitCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, DabbleMod.MODID);
 
-    public static RegistryObject<CreativeModeTab> AGGREGATION_TAB = CREATIVE_TABS.register("aggregation_tab", () -> CreativeModeTab.builder()
-            .title(Component.translatable("aggregation.creative_tab"))
+    public static RegistryObject<CreativeModeTab> DABBLE_TAB = CREATIVE_TABS.register("dabble_tab", () -> CreativeModeTab.builder()
+            .title(Component.translatable("dabble.creative_tab"))
             .icon(() -> new ItemStack(InitItems.EXAMPLE_BLOCK_ITEM.get()))
             .build());
 }

@@ -3,9 +3,11 @@ package com.noodlegamer76.dabble;
 import com.mojang.logging.LogUtils;
 import com.noodlegamer76.dabble.block.InitBlocks;
 import com.noodlegamer76.dabble.client.model.BlockModel;
+import com.noodlegamer76.dabble.client.renderer.BouncyBallRenderer;
 import com.noodlegamer76.dabble.client.renderer.EndSkyRenderer;
 import com.noodlegamer76.dabble.creativetabs.DabbleTab;
 import com.noodlegamer76.dabble.creativetabs.InitCreativeTabs;
+import com.noodlegamer76.dabble.entity.InitEntity;
 import com.noodlegamer76.dabble.entity.block.EndSkyEntity;
 import com.noodlegamer76.dabble.entity.block.InitBlockEntities;
 import com.noodlegamer76.dabble.item.InitItems;
@@ -54,6 +56,7 @@ public class DabbleMod
         InitBlockEntities.BLOCK_ENTITIES.register(modEventBus);
 
         InitCreativeTabs.CREATIVE_TABS.register(modEventBus);
+        InitEntity.ENTITIES.register(modEventBus);
         modEventBus.register(new DabbleTab());
 
         // Register ourselves for server and other game events we are interested in
@@ -99,6 +102,7 @@ public class DabbleMod
         @SubscribeEvent
         public static void entityRenderers(EntityRenderersEvent.RegisterRenderers event) {
             event.registerBlockEntityRenderer(InitBlockEntities.END_SKY_ENTITY.get(), EndSkyRenderer::new);
+            event.registerEntityRenderer(InitEntity.BOUNCY_BALL.get(), BouncyBallRenderer::new);
         }
         @SubscribeEvent
         public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {

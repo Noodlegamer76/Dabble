@@ -17,4 +17,12 @@ public class InitEntity {
                     .canSpawnFarFromPlayer()
                     .build(DabbleMod.MODID + ":human"));
 
+    public static final RegistryObject<EntityType<BouncyBallEntity>> BOUNCY_BALL = ENTITIES.register("bouncy_ball",
+            () -> EntityType.Builder.of(BouncyBallEntity::new, MobCategory.MISC)
+                    .sized(1.0F, 1.0F)
+                    .clientTrackingRange(10)
+                    .updateInterval(10)
+                    .canSpawnFarFromPlayer()
+                    .build(DabbleMod.MODID + ":bouncy_ball"));
+
 }
