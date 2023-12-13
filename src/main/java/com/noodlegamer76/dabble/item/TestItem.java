@@ -17,10 +17,12 @@ public class TestItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        BouncyBallEntity ball = new BouncyBallEntity(InitEntity.BOUNCY_BALL.get(), pLevel);
-        ball.setPos(pPlayer.getX(), pPlayer.getY(), pPlayer.getZ());
-        pLevel.addFreshEntity(ball);
-        ball.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), pPlayer.getXRot(), 1, 0);
+        if (!pLevel.isClientSide) {
+            BouncyBallEntity ball = new BouncyBallEntity(InitEntity.BOUNCY_BALL.get(), pLevel);
+            ball.setPos(pPlayer.getX(), pPlayer.getY(), pPlayer.getZ());
+            ball.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), pPlayer.getXRot(), 1, 0);
+            pLevel.addFreshEntity(ball);
+        }
         return super.use(pLevel, pPlayer, pUsedHand);
 
     }
