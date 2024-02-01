@@ -2,6 +2,7 @@ package com.noodlegamer76.dabble.datagen;
 
 import com.noodlegamer76.dabble.DabbleMod;
 import com.noodlegamer76.dabble.block.InitBlocks;
+import com.noodlegamer76.dabble.item.InitItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -23,6 +24,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         //   handHeldItem(ItemInit.YOUTUBER_PICKAXE);
         //   simpleItem(ItemInit.RAINBOW_GEM);
+
+        withExistingParent(InitItems.WARDLING_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
 
     private ItemModelBuilder saplingItem(RegistryObject<Block> item) {

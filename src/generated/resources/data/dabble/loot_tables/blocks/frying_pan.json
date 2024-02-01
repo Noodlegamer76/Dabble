@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "dabble:example_block"
+          "name": "dabble:frying_pan"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "dabble:blocks/example_block"
+  "random_sequence": "dabble:blocks/frying_pan"
 }

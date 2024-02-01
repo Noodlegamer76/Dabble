@@ -15,10 +15,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-       dropSelf(InitBlocks.EXAMPLE_BLOCK.get());
-       dropSelf(InitBlocks.PATTERN_WOOL.get());
-       dropSelf(InitBlocks.PATTERN_CARPET.get());
-
+       dropSelf(InitBlocks.FRYING_PAN.get());
 
         //dropSelf(BlockInit.CRYSTALLIZED_DIRT.get());
 

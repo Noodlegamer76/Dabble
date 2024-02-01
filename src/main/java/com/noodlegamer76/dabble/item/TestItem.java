@@ -1,6 +1,5 @@
 package com.noodlegamer76.dabble.item;
 
-import com.noodlegamer76.dabble.entity.BouncyBallEntity;
 import com.noodlegamer76.dabble.entity.InitEntity;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -18,10 +17,7 @@ public class TestItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         if (!pLevel.isClientSide) {
-            BouncyBallEntity ball = new BouncyBallEntity(InitEntity.BOUNCY_BALL.get(), pLevel);
-            ball.setPos(pPlayer.getX(), pPlayer.getY(), pPlayer.getZ());
-            ball.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), pPlayer.getXRot(), 1, 0);
-            pLevel.addFreshEntity(ball);
+
         }
         return super.use(pLevel, pPlayer, pUsedHand);
 

@@ -14,6 +14,6 @@ public class InitCreativeTabs {
 
     public static RegistryObject<CreativeModeTab> DABBLE_TAB = CREATIVE_TABS.register("dabble_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("dabble.creative_tab"))
-            .icon(() -> new ItemStack(InitItems.EXAMPLE_BLOCK_ITEM.get()))
+            .icon(() -> new ItemStack(InitItems.FRYING_PAN.get()))
             .build());
 }
