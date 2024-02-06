@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.noodlegamer76.dabble.block.InitBlocks;
 import com.noodlegamer76.dabble.client.model.ModModelLayers;
 import com.noodlegamer76.dabble.client.model.WardlingModel;
+import com.noodlegamer76.dabble.client.renderer.ModDimensionSpecialEffects;
 import com.noodlegamer76.dabble.client.renderer.WardlingRenderer;
 import com.noodlegamer76.dabble.creativetabs.DabbleTab;
 import com.noodlegamer76.dabble.creativetabs.InitCreativeTabs;
@@ -13,9 +14,11 @@ import com.noodlegamer76.dabble.event.ModEventBusEvents;
 import com.noodlegamer76.dabble.item.InitItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -93,6 +96,10 @@ public class DabbleMod
 
         }
 
+        @SubscribeEvent
+        public static void registerDimensionEffects(RegisterDimensionSpecialEffectsEvent event) {
+            event.register(new ResourceLocation(MODID, "layer1"), ModDimensionSpecialEffects.LAYER1);
+        }
         @SubscribeEvent
         public static void entityRenderers(EntityRenderersEvent.RegisterRenderers event) {
             event.registerEntityRenderer(InitEntity.WARDLING.get(), WardlingRenderer::new);
