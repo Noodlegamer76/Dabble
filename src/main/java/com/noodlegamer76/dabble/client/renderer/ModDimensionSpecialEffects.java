@@ -13,6 +13,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix4f;
 import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 import java.awt.*;
 
@@ -35,18 +36,26 @@ public class ModDimensionSpecialEffects {
         }
 
         @Override
+        public void adjustLightmapColors(ClientLevel level, float partialTicks, float skyDarken, float blockLightRedFlicker, float skyLight, int pixelX, int pixelY, Vector3f colors) {
+            super.adjustLightmapColors(level, partialTicks, skyDarken, blockLightRedFlicker, skyLight, pixelX, pixelY, colors);
+        }
+
+
+        @Override
         public boolean renderSky(ClientLevel level, int ticks, float partialTick, PoseStack pPoseStack, Camera camera, Matrix4f projectionMatrix, boolean isFoggy, Runnable setupFog) {
 
-            SkyBoxRenderer.render(pPoseStack,
-                    new ResourceLocation(DabbleMod.MODID, "textures/environment/layer1_skybox/front.png"),
-                    new ResourceLocation(DabbleMod.MODID, "textures/environment/layer1_skybox/back.png"),
-                    new ResourceLocation(DabbleMod.MODID, "textures/environment/layer1_skybox/left.png"),
-                    new ResourceLocation(DabbleMod.MODID, "textures/environment/layer1_skybox/right.png"),
-                    new ResourceLocation(DabbleMod.MODID, "textures/environment/layer1_skybox/top.png"),
-                    new ResourceLocation(DabbleMod.MODID, "textures/environment/layer1_skybox/bottom.png")
-                    );
-
-
+            SkyBoxRenderer.render(pPoseStack, ticks, partialTick, 255, 0.25f,
+                    new ResourceLocation(DabbleMod.MODID, "textures/environment/layer1/skybox1")
+            );
+            SkyBoxRenderer.render(pPoseStack, ticks, partialTick, 180, 0.6f,
+                    new ResourceLocation(DabbleMod.MODID, "textures/environment/layer1/skybox2")
+            );
+            SkyBoxRenderer.render(pPoseStack, ticks, partialTick, 127, 1.0f,
+                    new ResourceLocation(DabbleMod.MODID, "textures/environment/layer1/skybox3")
+            );
+            SkyBoxRenderer.render(pPoseStack, ticks, partialTick, 96, 1.5f,
+                    new ResourceLocation(DabbleMod.MODID, "textures/environment/layer1/skybox4")
+            );
             return true;
         }
 

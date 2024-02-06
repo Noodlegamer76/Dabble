@@ -12,7 +12,8 @@ import org.joml.Matrix4f;
 
 public class SkyBoxRenderer {
 
-    public static void render(PoseStack poseStack, ResourceLocation frontTexture, ResourceLocation backTexture, ResourceLocation leftTexture,
+    public static void render(PoseStack poseStack, int ticks, float partialTick, int alpha, float speed,
+                              ResourceLocation frontTexture, ResourceLocation backTexture, ResourceLocation leftTexture,
                               ResourceLocation rightTexture, ResourceLocation topTexture, ResourceLocation bottomTexture) {
 
 
@@ -24,6 +25,7 @@ public class SkyBoxRenderer {
         BufferBuilder bufferbuilder = tesselator.getBuilder();
         for(int i = 0; i < 6; ++i) {
             poseStack.pushPose();
+            poseStack.mulPose(Axis.YN.rotationDegrees((ticks + partialTick) * speed));
             if (i == 0) {
                 RenderSystem.setShaderTexture(0, frontTexture);
                 poseStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
@@ -62,19 +64,31 @@ public class SkyBoxRenderer {
                 RenderSystem.setShaderTexture(0, topTexture);
                 poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
                 poseStack.mulPose(Axis.ZP.rotationDegrees(0.0F));
+                poseStack.mulPose(Axis.YN.rotationDegrees(180));
             }
 
             Matrix4f matrix4f = poseStack.last().pose();
             bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-            bufferbuilder.vertex(matrix4f, -100.0F, -100.0F, -100.0F).uv(0.0F, 0.0F).color(40, 40, 40, 255).endVertex();
-            bufferbuilder.vertex(matrix4f, -100.0F, -100.0F, 100.0F).uv(0.0F, 1.0F).color(40, 40, 40, 255).endVertex();
-            bufferbuilder.vertex(matrix4f, 100.0F, -100.0F, 100.0F).uv(1.0F, 1.0F).color(40, 40, 40, 255).endVertex();
-            bufferbuilder.vertex(matrix4f, 100.0F, -100.0F, -100.0F).uv(1.0F, 0.0F).color(40, 40, 40, 255).endVertex();
+            bufferbuilder.vertex(matrix4f, -100.0F, -100.0F, -100.0F).uv(0.0F, 0.0F).color(255, 255, 255, alpha).endVertex();
+            bufferbuilder.vertex(matrix4f, -100.0F, -100.0F, 100.0F).uv(0.0F, 1.0F).color(255, 255, 255, alpha).endVertex();
+            bufferbuilder.vertex(matrix4f, 100.0F, -100.0F, 100.0F).uv(1.0F, 1.0F).color(255, 255, 255, alpha).endVertex();
+            bufferbuilder.vertex(matrix4f, 100.0F, -100.0F, -100.0F).uv(1.0F, 0.0F).color(255, 255, 255, alpha).endVertex();
             tesselator.end();
             poseStack.popPose();
         }
 
         RenderSystem.depthMask(true);
         RenderSystem.disableBlend();
+    }
+
+    public static void render(PoseStack poseStack, int ticks, float partialTick, int alpha, float speed, ResourceLocation folder) {
+        SkyBoxRenderer.render(poseStack, ticks, partialTick, alpha, speed,
+                folder.withSuffix("/front.png"),
+                folder.withSuffix("/back.png"),
+                folder.withSuffix("/left.png"),
+                folder.withSuffix("/right.png"),
+                folder.withSuffix("/top.png"),
+                folder.withSuffix("/bottom.png")
+        );
     }
 }
