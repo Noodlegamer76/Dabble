@@ -2499,7 +2499,7 @@
       "type": "minecraft:multi_noise",
       "biomes": [
         {
-          "biome": "dabble:layer1",
+          "biome": "dabble:layer1_biome",
           "parameters": {
             "temperature": [
               -0.45,

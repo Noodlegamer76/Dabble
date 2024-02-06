@@ -44,17 +44,11 @@ public class ModDimensionSpecialEffects {
         @Override
         public boolean renderSky(ClientLevel level, int ticks, float partialTick, PoseStack pPoseStack, Camera camera, Matrix4f projectionMatrix, boolean isFoggy, Runnable setupFog) {
 
-            SkyBoxRenderer.render(pPoseStack, ticks, partialTick, 255, 0.25f,
+            SkyBoxRenderer.render(pPoseStack, ticks, partialTick, 255, 0.15f,
                     new ResourceLocation(DabbleMod.MODID, "textures/environment/layer1/skybox1")
             );
-            SkyBoxRenderer.render(pPoseStack, ticks, partialTick, 180, 0.6f,
+            SkyBoxRenderer.render(pPoseStack, ticks, partialTick, 200, 0.3f,
                     new ResourceLocation(DabbleMod.MODID, "textures/environment/layer1/skybox2")
-            );
-            SkyBoxRenderer.render(pPoseStack, ticks, partialTick, 127, 1.0f,
-                    new ResourceLocation(DabbleMod.MODID, "textures/environment/layer1/skybox3")
-            );
-            SkyBoxRenderer.render(pPoseStack, ticks, partialTick, 96, 1.5f,
-                    new ResourceLocation(DabbleMod.MODID, "textures/environment/layer1/skybox4")
             );
             return true;
         }
