@@ -26,4 +26,7 @@ public class InitItems {
 
     public static final RegistryObject<Item> FRYING_PAN = ITEMS.register("frying_pan",
             () -> new FryingPan(InitBlocks.FRYING_PAN.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> NORMAL_VOID_BLOCK = ITEMS.register("normal_void_block",
+            () -> new BlockItem(InitBlocks.NORMAL_VOID_BLOCK.get(), new Item.Properties()));
 }

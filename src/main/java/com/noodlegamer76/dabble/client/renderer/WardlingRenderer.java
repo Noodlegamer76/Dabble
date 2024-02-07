@@ -11,19 +11,27 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 
 public class WardlingRenderer extends MobRenderer<WardlingEntity, WardlingModel<WardlingEntity>> {
+    public static final ResourceLocation TEXTURE = new ResourceLocation(DabbleMod.MODID, "textures/entity/wardling.png");
     public WardlingRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new WardlingModel<>(pContext.bakeLayer(ModModelLayers.WARDLING_LAYER)), 0.5f);
     }
 
     @Override
     public ResourceLocation getTextureLocation(WardlingEntity pEntity) {
-            return new ResourceLocation(DabbleMod.MODID, "textures/entity/wardling.png");
+            return TEXTURE;
+    }
+
+    @Nullable
+    @Override
+    protected RenderType getRenderType(WardlingEntity pLivingEntity, boolean pBodyVisible, boolean pTranslucent, boolean pGlowing) {
+        return ModRenderTypes.TEST_RENDERER;
     }
 
     @Override

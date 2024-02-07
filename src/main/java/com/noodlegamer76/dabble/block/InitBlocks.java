@@ -27,6 +27,9 @@ public class InitBlocks {
                 }
             });
 
+    public static final RegistryObject<Block> NORMAL_VOID_BLOCK = BLOCKS.register("normal_void_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(DyeColor.BLACK)));
+
 
 
 }

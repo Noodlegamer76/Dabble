@@ -11,6 +11,7 @@ public class DabbleTab {
             event.accept(InitItems.FRYING_PAN);
             event.accept(InitItems.TEST_ITEM);
             event.accept(InitItems.WARDLING_SPAWN_EGG);
+            event.accept(InitItems.NORMAL_VOID_BLOCK);
         }
     }
 }
