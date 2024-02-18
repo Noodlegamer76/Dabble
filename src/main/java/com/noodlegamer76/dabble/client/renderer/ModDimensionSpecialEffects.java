@@ -18,10 +18,10 @@ import org.joml.Vector3f;
 import java.awt.*;
 
 public class ModDimensionSpecialEffects {
-    public static final DimensionSpecialEffects LAYER1 = new DimensionSpecialEffects(100, false, DimensionSpecialEffects.SkyType.END, true, true) {
+    public static final DimensionSpecialEffects LAYER1 = new DimensionSpecialEffects(256, true, DimensionSpecialEffects.SkyType.END, false, false) {
         @Override
         public Vec3 getBrightnessDependentFogColor(Vec3 pFogColor, float pBrightness) {
-            return Vec3.fromRGB24(Color.WHITE.getRGB());
+            return Vec3.fromRGB24(Color.DARK_GRAY.getRGB());
         }
 
         @Nullable
@@ -36,18 +36,12 @@ public class ModDimensionSpecialEffects {
         }
 
         @Override
-        public void adjustLightmapColors(ClientLevel level, float partialTicks, float skyDarken, float blockLightRedFlicker, float skyLight, int pixelX, int pixelY, Vector3f colors) {
-            super.adjustLightmapColors(level, partialTicks, skyDarken, blockLightRedFlicker, skyLight, pixelX, pixelY, colors);
-        }
+        public boolean renderSky(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, Camera camera, Matrix4f projectionMatrix, boolean isFoggy, Runnable setupFog) {
 
-
-        @Override
-        public boolean renderSky(ClientLevel level, int ticks, float partialTick, PoseStack pPoseStack, Camera camera, Matrix4f projectionMatrix, boolean isFoggy, Runnable setupFog) {
-
-            SkyBoxRenderer.render(pPoseStack, ticks, partialTick, 255, 0.15f,
+            SkyBoxRenderer.render(poseStack, ticks, partialTick, 255, 0.15f,
                     new ResourceLocation(DabbleMod.MODID, "textures/environment/layer1/skybox1")
             );
-            SkyBoxRenderer.render(pPoseStack, ticks, partialTick, 200, 0.3f,
+            SkyBoxRenderer.render(poseStack, ticks, partialTick, 200, 0.3f,
                     new ResourceLocation(DabbleMod.MODID, "textures/environment/layer1/skybox2")
             );
             return true;

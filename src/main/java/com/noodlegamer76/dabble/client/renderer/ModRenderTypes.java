@@ -24,5 +24,5 @@ public class ModRenderTypes {
                     .setTextureState(RenderStateShard.MultiTextureStateShard.builder().add(TheEndPortalRenderer.END_SKY_LOCATION,
                             false, false).add(TheEndPortalRenderer.END_PORTAL_LOCATION, false, false).build())
                     .createCompositeState(false)
-            );
+    );
 }

@@ -20,7 +20,7 @@ public class RegisterShadersEvent {
     @SubscribeEvent
     public static void registerShaders(net.minecraftforge.client.event.RegisterShadersEvent event) throws IOException {
 
-        event.registerShader(new ShaderInstance(event.getResourceProvider(), new ResourceLocation(DabbleMod.MODID, "test"), DefaultVertexFormat.POSITION), (e) -> TEST = e);
+        event.registerShader(new ShaderInstance(event.getResourceProvider(), new ResourceLocation(DabbleMod.MODID, "test"), DefaultVertexFormat.POSITION_TEX_COLOR), (e) -> TEST = e);
     }
 
     @SubscribeEvent

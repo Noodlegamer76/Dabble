@@ -13,7 +13,7 @@ public class TestFeature extends Feature<NoneFeatureConfiguration> {
 
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
-        pContext.level().setBlock(pContext.origin(), InitBlocks.NORMAL_VOID_BLOCK.get().defaultBlockState(), 3);
+        pContext.level().setBlock(pContext.origin(), InitBlocks.VOID_ASH.get().defaultBlockState(), 3);
         return true;
     }
 }

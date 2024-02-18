@@ -20,10 +20,22 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-
-
-        //   handHeldItem(ItemInit.YOUTUBER_PICKAXE);
-        //   simpleItem(ItemInit.RAINBOW_GEM);
+        evenSimplerBlockItem(InitBlocks.WHITE_COSMIC_LEAVES);
+        evenSimplerBlockItem(InitBlocks.LIGHT_GRAY_COSMIC_LEAVES);
+        evenSimplerBlockItem(InitBlocks.GRAY_COSMIC_LEAVES);
+        evenSimplerBlockItem(InitBlocks.BLACK_COSMIC_LEAVES);
+        evenSimplerBlockItem(InitBlocks.RED_COSMIC_LEAVES);
+        evenSimplerBlockItem(InitBlocks.ORANGE_COSMIC_LEAVES);
+        evenSimplerBlockItem(InitBlocks.YELLOW_COSMIC_LEAVES);
+        evenSimplerBlockItem(InitBlocks.LIME_COSMIC_LEAVES);
+        evenSimplerBlockItem(InitBlocks.GREEN_COSMIC_LEAVES);
+        evenSimplerBlockItem(InitBlocks.LIGHT_BLUE_COSMIC_LEAVES);
+        evenSimplerBlockItem(InitBlocks.CYAN_COSMIC_LEAVES);
+        evenSimplerBlockItem(InitBlocks.BLUE_COSMIC_LEAVES);
+        evenSimplerBlockItem(InitBlocks.PURPLE_COSMIC_LEAVES);
+        evenSimplerBlockItem(InitBlocks.PINK_COSMIC_LEAVES);
+        evenSimplerBlockItem(InitBlocks.MAGENTA_COSMIC_LEAVES);
+        evenSimplerBlockItem(InitBlocks.BROWN_COSMIC_LEAVES);
 
         withExistingParent(InitItems.WARDLING_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }

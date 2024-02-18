@@ -1,6 +1,10 @@
 package com.noodlegamer76.dabble.world.features;
 
 import com.noodlegamer76.dabble.DabbleMod;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.OreFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -20,8 +24,8 @@ public class InitFeatures {
             "void_tendril",
             () -> new VoidTenderilFeature(NoneFeatureConfiguration.CODEC)
     );
-    public static final RegistryObject<Feature<OreConfiguration>> VOID_SPLOTCH = FEATURES.register(
-            "void_splotch",
-            () -> new OreFeature(OreConfiguration.CODEC)
-    );
+   // public static final RegistryObject<Feature<OreConfiguration>> VOID_SPLOTCH = FEATURES.register(
+   //         "void_splotch",
+   //         () -> new OreFeature(OreConfiguration.CODEC)
+   // );
 }

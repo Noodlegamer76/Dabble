@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "dabble:normal_void_block"
+          "name": "dabble:render_tester_block"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "dabble:blocks/normal_void_block"
+  "random_sequence": "dabble:blocks/render_tester"
 }

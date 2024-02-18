@@ -1,16 +1,15 @@
-#version 150
+#version 330 core
 
-#moj_import <projection.glsl>
-
-in vec3 Position;
+layout (location = 0) in vec3 aPosition;
+out vec3 vWorldPos;
 
 uniform mat4 ModelViewMat;
-uniform mat4 ProjMat;
-
-out vec4 texProj0;
+uniform vec3 uBlockPosition;
 
 void main() {
-    gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
+    // Calculate world position relative to the block
+    vWorldPos = aPosition + uBlockPosition;
 
-    texProj0 = projection_from_position(gl_Position);
+    // Transform vertex position
+    gl_Position = ModelViewMat * vec4(aPosition, 1.0);
 }

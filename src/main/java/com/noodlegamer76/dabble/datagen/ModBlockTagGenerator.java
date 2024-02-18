@@ -32,5 +32,25 @@ public class ModBlockTagGenerator extends BlockTagsProvider  {
                         BlockTags.MINEABLE_WITH_PICKAXE,
                         BlockTags.MINEABLE_WITH_SHOVEL
                 );
+
+        this.tag(BlockTags.REPLACEABLE_BY_TREES)
+                .add(
+                        InitBlocks.WHITE_COSMIC_LEAVES.get(),
+                        InitBlocks.LIGHT_GRAY_COSMIC_LEAVES.get(),
+                        InitBlocks.GRAY_COSMIC_LEAVES.get(),
+                        InitBlocks.BLACK_COSMIC_LEAVES.get(),
+                        InitBlocks.RED_COSMIC_LEAVES.get(),
+                        InitBlocks.ORANGE_COSMIC_LEAVES.get(),
+                        InitBlocks.YELLOW_COSMIC_LEAVES.get(),
+                        InitBlocks.LIME_COSMIC_LEAVES.get(),
+                        InitBlocks.GREEN_COSMIC_LEAVES.get(),
+                        InitBlocks.LIGHT_BLUE_COSMIC_LEAVES.get(),
+                        InitBlocks.CYAN_COSMIC_LEAVES.get(),
+                        InitBlocks.BLUE_COSMIC_LEAVES.get(),
+                        InitBlocks.PURPLE_COSMIC_LEAVES.get(),
+                        InitBlocks.MAGENTA_COSMIC_LEAVES.get(),
+                        InitBlocks.PINK_COSMIC_LEAVES.get(),
+                        InitBlocks.BROWN_COSMIC_LEAVES.get()
+                );
     }
 }

@@ -1,10 +1,11 @@
-package com.noodlegamer76.dabble.client.renderer;
+package com.noodlegamer76.dabble.client.renderer.entity;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.noodlegamer76.dabble.DabbleMod;
 import com.noodlegamer76.dabble.client.model.ModModelLayers;
 import com.noodlegamer76.dabble.client.model.WardlingModel;
+import com.noodlegamer76.dabble.client.renderer.ModRenderTypes;
 import com.noodlegamer76.dabble.entity.entities.WardlingEntity;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.MultiBufferSource;

@@ -1,34 +1,25 @@
 package com.noodlegamer76.dabble;
 
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.logging.LogUtils;
 import com.noodlegamer76.dabble.block.InitBlocks;
 import com.noodlegamer76.dabble.client.model.ModModelLayers;
 import com.noodlegamer76.dabble.client.model.WardlingModel;
 import com.noodlegamer76.dabble.client.renderer.ModDimensionSpecialEffects;
-import com.noodlegamer76.dabble.client.renderer.WardlingRenderer;
+import com.noodlegamer76.dabble.client.renderer.block.TestRenderer;
+import com.noodlegamer76.dabble.client.renderer.entity.WardlingRenderer;
 import com.noodlegamer76.dabble.creativetabs.DabbleTab;
 import com.noodlegamer76.dabble.creativetabs.InitCreativeTabs;
 import com.noodlegamer76.dabble.entity.InitEntity;
 import com.noodlegamer76.dabble.entity.block.InitBlockEntities;
-import com.noodlegamer76.dabble.event.ModEventBusEvents;
 import com.noodlegamer76.dabble.event.RegisterShadersEvent;
 import com.noodlegamer76.dabble.item.InitItems;
 import com.noodlegamer76.dabble.world.features.InitFeatures;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.RenderStateShard;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.ShaderInstance;
-import net.minecraft.client.renderer.blockentity.TheEndPortalRenderer;
-import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.RegisterDimensionSpecialEffectsEvent;
-import net.minecraftforge.client.event.RegisterNamedRenderTypesEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -43,7 +34,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
 import java.awt.*;
-import java.io.IOException;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(DabbleMod.MODID)
@@ -112,6 +102,16 @@ public class DabbleMod
         {
 
         }
+
+        @SubscribeEvent
+        public static void blockColors(RegisterColorHandlersEvent.Block event) {
+            event.register((state, level, pos, tintIndex) -> pos != null && level != null ?
+                            pos.getY() > 0 ? Color.WHITE.getRGB() : pos.getY() < -64 ? Color.BLACK.getRGB() :
+                                    Color.getHSBColor(0.0f, 0.0f, pos.getY() / 64f + 1).getRGB() : 0,
+                    InitBlocks.VOID_INFESTED_STONE.get()
+            );
+        }
+
         @SubscribeEvent
         public static void registerDimensionEffects(RegisterDimensionSpecialEffectsEvent event) {
             event.register(new ResourceLocation(MODID, "layer1"), ModDimensionSpecialEffects.LAYER1);
@@ -119,6 +119,8 @@ public class DabbleMod
         @SubscribeEvent
         public static void entityRenderers(EntityRenderersEvent.RegisterRenderers event) {
             event.registerEntityRenderer(InitEntity.WARDLING.get(), WardlingRenderer::new);
+
+            event.registerBlockEntityRenderer(InitBlockEntities.RENDER_TESTER.get(), TestRenderer::new);
         }
         @SubscribeEvent
         public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {

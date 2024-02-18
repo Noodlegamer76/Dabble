@@ -10,6 +10,6 @@ import net.minecraftforge.registries.RegistryObject;
 public class InitBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, DabbleMod.MODID);
 
-   // public static final RegistryObject<BlockEntityType<EndSkyEntity>> END_SKY_ENTITY = BLOCK_ENTITIES.register("end_sky",
-   //         () -> BlockEntityType.Builder.of(EndSkyEntity::new, InitBlocks.END_SKY_BLOCK.get()).build(null));
+        public static final RegistryObject<BlockEntityType<RenderTester>> RENDER_TESTER = BLOCK_ENTITIES.register("render_tester",
+            () -> BlockEntityType.Builder.of(RenderTester::new, InitBlocks.RENDER_TESTER_BLOCK.get()).build(null));
 }
