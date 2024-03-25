@@ -1,15 +1,17 @@
-#version 330 core
+#version 300 es
+in vec3 position; // input vertex position from mesh
+in vec2 texcoord; // input vertex texture coordinate from mesh
+in vec3 normal;   // input vertex normal from mesh
 
-layout (location = 0) in vec3 aPosition;
-out vec3 vWorldPos;
+// uniform variables are exposed as node slots
+uniform mat4 ProjMat; //description="camera projection matrix"
+uniform mat4 ModelViewMat; // description="modelview transformation"
 
-uniform mat4 ModelViewMat;
-uniform vec3 uBlockPosition;
+out vec2 tc; // output texture coordinate of vertex
+out vec4 fn; // output fragment normal of vertex
 
-void main() {
-    // Calculate world position relative to the block
-    vWorldPos = aPosition + uBlockPosition;
-
-    // Transform vertex position
-    gl_Position = ModelViewMat * vec4(aPosition, 1.0);
+void main(){
+    tc = texcoord;
+    fn = vec4(normal, 1.0);
+    gl_Position = ProjMat * ModelViewMat * vec4(position, 1.0);
 }

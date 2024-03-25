@@ -1,22 +1,9 @@
-#version 330 core
-
-in vec3 vWorldPos;
-out vec4 FragColor;
-
-uniform samplerCube uSkyboxTexture;
-uniform vec3 uBlockPosition;
-uniform float uVisibleRange; // Uniform for visible range
+#version 300 es
+precision highp float;
+out vec4 outColor;
+in vec2 tc; // texture coordinate of pixel (interpolated)
+in vec4 fn; // fragment normal of pixel (interpolated)
 
 void main() {
-    // Calculate distance from fragment to block
-    float distanceToBlock = distance(vWorldPos, uBlockPosition);
-
-    // Check if fragment is within visible range of the block
-    if (distanceToBlock <= uVisibleRange) {
-        // Render the skybox texture
-        FragColor = texture(uSkyboxTexture, normalize(vWorldPos - uBlockPosition));
-    } else {
-        // Render the fragment as transparent
-        FragColor = vec4(0.0); // Complete transparency
-    }
+    outColor = vec4(tc.x, tc.y, 0.0, 1.0);
 }
